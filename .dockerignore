@@ -1,12 +1,44 @@
-node_modules
-npm-debug.log
+# Git
 .git
 .gitignore
-README.md
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Node modules
+node_modules
+npm-debug.log
+
+# Laravel
+storage/logs/*
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+bootstrap/cache/*
+
+# IDE
+.vscode
+.idea
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment files
 .env
 .env.example
-.htaccess
-docker-compose.yml
-docker-deploy.md
-deploy-script.bat
-deploy-instructions.md 
+
+# Testing
+.phpunit.result.cache
+coverage
+
+# Build artifacts
+public/build
+public/hot
+public/storage
+
+# Temporary files
+*.tmp
+*.temp 

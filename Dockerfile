@@ -9,8 +9,28 @@ RUN apt-get update && apt-get install -y nginx supervisor
 # Tạo thư mục làm việc
 WORKDIR /var/www/html
 
-# Copy composer files
-COPY composer.json composer.lock ./
+# Copy composer files, artisan, bootstrap và routes
+COPY composer.json composer.lock artisan ./
+COPY bootstrap ./bootstrap
+COPY routes ./routes
+
+# Tạo file .env cơ bản
+RUN echo "APP_NAME=Laravel" > .env && \
+    echo "APP_ENV=production" >> .env && \
+    echo "APP_KEY=" >> .env && \
+    echo "APP_DEBUG=false" >> .env && \
+    echo "APP_URL=http://localhost" >> .env && \
+    echo "LOG_CHANNEL=stack" >> .env && \
+    echo "LOG_DEPRECATIONS_CHANNEL=null" >> .env && \
+    echo "LOG_LEVEL=debug" >> .env && \
+    echo "DB_CONNECTION=sqlite" >> .env && \
+    echo "DB_DATABASE=/var/www/html/database/database.sqlite" >> .env && \
+    echo "BROADCAST_DRIVER=log" >> .env && \
+    echo "CACHE_DRIVER=file" >> .env && \
+    echo "FILESYSTEM_DISK=local" >> .env && \
+    echo "QUEUE_CONNECTION=sync" >> .env && \
+    echo "SESSION_DRIVER=file" >> .env && \
+    echo "SESSION_LIFETIME=120" >> .env
 
 # Tạo thư mục cần thiết
 RUN mkdir -p storage/framework/{sessions,views,cache} \
@@ -20,8 +40,11 @@ RUN mkdir -p storage/framework/{sessions,views,cache} \
 # Cài đặt PHP dependencies với verbose output
 RUN composer install --no-dev --optimize-autoloader --no-interaction --verbose
 
-# Copy toàn bộ source code
+# Copy toàn bộ source code (trừ public/storage nếu là symbolic link)
 COPY . .
+
+# Xóa symbolic link public/storage nếu tồn tại và tạo lại
+RUN rm -f public/storage
 
 # Cài đặt Node.js và NPM
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
