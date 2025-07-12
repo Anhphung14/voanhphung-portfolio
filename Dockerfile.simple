@@ -1,10 +1,8 @@
-# Sử dụng Laravel Sail base image (đã có sẵn PHP 8.2 và Composer)
+# Sử dụng Laravel Sail base image
 FROM laravelsail/php82-composer:latest
 
-# Cài đặt Nginx và Supervisor
+# Cài đặt Nginx
 RUN apt-get update && apt-get install -y nginx supervisor
-
-# Composer đã có sẵn trong Laravel Sail image
 
 # Tạo thư mục làm việc
 WORKDIR /var/www/html
@@ -12,13 +10,8 @@ WORKDIR /var/www/html
 # Copy composer files
 COPY composer.json composer.lock ./
 
-# Tạo thư mục cần thiết
-RUN mkdir -p storage/framework/{sessions,views,cache} \
-    && mkdir -p storage/logs \
-    && mkdir -p bootstrap/cache
-
-# Cài đặt PHP dependencies với verbose output
-RUN composer install --no-dev --optimize-autoloader --no-interaction --verbose
+# Cài đặt PHP dependencies
+RUN composer install --no-dev --optimize-autoloader --no-interaction
 
 # Copy toàn bộ source code
 COPY . .
