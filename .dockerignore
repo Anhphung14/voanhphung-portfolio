@@ -4,19 +4,11 @@
 
 # Docker
 Dockerfile
-docker-compose.yml
 .dockerignore
 
 # Node modules
 node_modules
 npm-debug.log
-
-# Laravel
-storage/logs/*
-storage/framework/cache/*
-storage/framework/sessions/*
-storage/framework/views/*
-bootstrap/cache/*
 
 # IDE
 .vscode
@@ -27,17 +19,11 @@ bootstrap/cache/*
 Thumbs.db
 
 # Environment files
-.env
 .env.example
 
 # Testing
 .phpunit.result.cache
 coverage
-
-# Build artifacts
-public/build
-public/hot
-public/storage
 
 # Temporary files
 *.tmp

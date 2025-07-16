@@ -66,14 +66,14 @@
             padding: 32px 0 16px 0;
             font-size: 1rem;
         }
-        
+
         /* Section spacing and decorative elements */
         .section-container {
             padding: 80px 0;
             position: relative;
             margin: 40px 0;
         }
-        
+
         .section-container::before {
             content: '';
             position: absolute;
@@ -86,7 +86,7 @@
             border-radius: 2px;
             opacity: 0.6;
         }
-        
+
         .section-container::after {
             content: '';
             position: absolute;
@@ -99,12 +99,12 @@
             border-radius: 2px;
             opacity: 0.6;
         }
-        
+
         /* Decorative corner elements */
         .section-container .container {
             position: relative;
         }
-        
+
         .section-container .container::before {
             content: '';
             position: absolute;
@@ -117,7 +117,7 @@
             border-radius: 8px 0 0 0;
             opacity: 0.4;
         }
-        
+
         .section-container .container::after {
             content: '';
             position: absolute;
@@ -130,7 +130,7 @@
             border-radius: 0 0 8px 0;
             opacity: 0.4;
         }
-        
+
         /* Floating particles effect */
         .floating-particles {
             position: absolute;
@@ -142,7 +142,7 @@
             pointer-events: none;
             z-index: 1;
         }
-        
+
         .particle {
             position: absolute;
             width: 4px;
@@ -152,37 +152,37 @@
             opacity: 0.3;
             animation: float 6s ease-in-out infinite;
         }
-        
+
         .particle:nth-child(1) {
             top: 20%;
             left: 10%;
             animation-delay: 0s;
         }
-        
+
         .particle:nth-child(2) {
             top: 60%;
             left: 80%;
             animation-delay: 2s;
         }
-        
+
         .particle:nth-child(3) {
             top: 80%;
             left: 20%;
             animation-delay: 4s;
         }
-        
+
         .particle:nth-child(4) {
             top: 40%;
             left: 90%;
             animation-delay: 1s;
         }
-        
+
         .particle:nth-child(5) {
             top: 10%;
             left: 70%;
             animation-delay: 3s;
         }
-        
+
         @keyframes float {
             0%, 100% {
                 transform: translateY(0px) rotate(0deg);
@@ -193,7 +193,7 @@
                 opacity: 0.6;
             }
         }
-        
+
         /* Section divider with glow effect */
         .section-divider {
             height: 2px;
@@ -203,7 +203,7 @@
             max-width: 200px;
             box-shadow: 0 0 20px rgba(167, 139, 250, 0.5);
         }
-        
+
         .section-divider::before {
             content: '';
             position: absolute;
@@ -216,14 +216,14 @@
             border-radius: 50%;
             box-shadow: 0 0 10px rgba(167, 139, 250, 0.8);
         }
-        
+
         /* Enhanced section titles */
         .section-title {
             position: relative;
             display: inline-block;
             padding: 0 20px;
         }
-        
+
         .section-title::before {
             content: '';
             position: absolute;
@@ -235,7 +235,7 @@
             background: linear-gradient(90deg, transparent, #a78bfa, transparent);
             border-radius: 2px;
         }
-        
+
         .section-title::after {
             content: '';
             position: absolute;
@@ -249,7 +249,7 @@
             opacity: 0.6;
             animation: pulse 2s ease-in-out infinite;
         }
-        
+
         .section-title .title-decoration-left {
             position: absolute;
             top: 50%;
@@ -262,46 +262,46 @@
             opacity: 0.6;
             animation: pulse 2s ease-in-out infinite reverse;
         }
-        
+
         @keyframes pulse {
-            0%, 100% { 
+            0%, 100% {
                 transform: translateY(-50%) scale(1);
                 opacity: 0.6;
             }
-            50% { 
+            50% {
                 transform: translateY(-50%) scale(1.2);
                 opacity: 1;
             }
         }
-        
+
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .section-container {
                 padding: 60px 0;
                 margin: 30px 0;
             }
-            
+
             .section-container .container::before,
             .section-container .container::after {
                 display: none;
             }
-            
+
             .particle {
                 display: none;
             }
         }
-        
+
         /* Additional decorative elements */
         .section-container:nth-child(even) .floating-particles .particle {
             animation-direction: reverse;
         }
-        
+
         /* Glowing border effect for sections */
         .section-container {
             position: relative;
             overflow: hidden;
         }
-        
+
         .section-container::before {
             content: '';
             position: absolute;
@@ -312,24 +312,24 @@
             background: linear-gradient(90deg, transparent, #a78bfa, transparent);
             animation: borderGlow 3s ease-in-out infinite;
         }
-        
+
         @keyframes borderGlow {
             0%, 100% { opacity: 0.3; }
             50% { opacity: 0.8; }
         }
-        
+
         /* Scroll reveal animation */
         .section-container {
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.8s ease-out;
         }
-        
+
         .section-container.revealed {
             opacity: 1;
             transform: translateY(0);
         }
-        
+
         /* Stagger animation for particles */
         .floating-particles .particle:nth-child(1) { animation-delay: 0s; }
         .floating-particles .particle:nth-child(2) { animation-delay: 1s; }
@@ -343,7 +343,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"><img src="{{ asset('storage/favicon.ico') }}" alt="Avatar"></span>
+      <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
@@ -368,14 +368,14 @@
 // Smooth scrolling for navigation links
 document.addEventListener('DOMContentLoaded', function() {
     const scrollLinks = document.querySelectorAll('.scroll-link');
-    
+
     scrollLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
-            
+
             const targetId = this.getAttribute('href');
             const targetSection = document.querySelector(targetId);
-            
+
             if (targetSection) {
                 const offsetTop = targetSection.offsetTop - 80; // Account for fixed navbar
                 window.scrollTo({
@@ -385,49 +385,49 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
+
     // Update active nav link based on scroll position
     window.addEventListener('scroll', function() {
         const sections = document.querySelectorAll('section[id], div[id]');
         const scrollPos = window.scrollY + 100;
-        
+
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.offsetHeight;
             const sectionId = section.getAttribute('id');
-            
+
             if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
                 document.querySelectorAll('.nav-link').forEach(link => {
                     link.classList.remove('active');
                 });
-                
+
                 const activeLink = document.querySelector(`[href="#${sectionId}"]`);
                 if (activeLink) {
                     activeLink.classList.add('active');
                 }
             }
         });
-        
+
         // Scroll reveal animation
         const sectionContainers = document.querySelectorAll('.section-container');
         sectionContainers.forEach(container => {
             const containerTop = container.offsetTop;
             const containerHeight = container.offsetHeight;
             const scrollPosition = window.scrollY + window.innerHeight;
-            
+
             if (scrollPosition > containerTop + containerHeight * 0.3) {
                 container.classList.add('revealed');
             }
         });
     });
-    
+
     // Initial reveal for sections already in view
     const sectionContainers = document.querySelectorAll('.section-container');
     sectionContainers.forEach(container => {
         const containerTop = container.offsetTop;
         const containerHeight = container.offsetHeight;
         const scrollPosition = window.scrollY + window.innerHeight;
-        
+
         if (scrollPosition > containerTop + containerHeight * 0.3) {
             container.classList.add('revealed');
         }
@@ -436,4 +436,4 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 @yield('scripts')
 </body>
-</html> 
+</html>

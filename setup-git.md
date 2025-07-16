@@ -113,3 +113,56 @@ Sau khi push code lên GitHub thành công, chúng ta sẽ:
 3. **Bước 4**: Cấu hình custom domain
 
 **Hãy thực hiện các bước trên và cho tôi biết khi hoàn thành!** 🚀 
+
+## **1. Map Custom Domain trên Cloud Run**
+
+Sau khi deploy thành công, chạy lệnh này:
+
+```bash
+gcloud run domain-mappings create \
+  --service voanhphung-portfolio \
+  --domain yourdomain.com \
+  --region asia-southeast1
+```
+
+Thay `yourdomain.com` bằng domain thực của bạn.
+
+## **2. Cấu hình DNS Records**
+
+Vào nhà cung cấp domain của bạn (như Namecheap, GoDaddy, etc.) và thêm DNS records:
+
+### **Nếu dùng domain gốc (yourdomain.com):**
+- **Type:** CNAME
+- **Name:** @ (hoặc để trống)
+- **Value:** ghs.googlehosted.com
+
+### **Nếu dùng subdomain (www.yourdomain.com):**
+- **Type:** CNAME  
+- **Name:** www
+- **Value:** ghs.googlehosted.com
+
+## **3. SSL Certificate (Tự động)**
+
+Google Cloud Run sẽ tự động cung cấp SSL certificate cho domain của bạn.
+
+## **4. Kiểm tra trạng thái**
+
+```bash
+<code_block_to_apply_changes_from>
+```
+
+## **Ví dụ cụ thể:**
+
+Nếu domain của bạn là `voanhphung.com`:
+
+1. **Map domain:**
+   ```bash
+   gcloud run domain-mappings create --service voanhphung-portfolio --domain voanhphung.com --region asia-southeast1
+   ```
+
+2. **DNS records:**
+   - Type: CNAME
+   - Name: @
+   - Value: ghs.googlehosted.com
+
+**Domain của bạn là gì?** Tôi sẽ hướng dẫn cụ thể hơn!
